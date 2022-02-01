@@ -4,23 +4,37 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.football.football_stats.data_updater.entity.League;
 import com.football.football_stats.data_updater.repository.LeagueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
 public class LeagueUpdaterService extends CommonUpdater {
+    private final List<String> sportWhitelist;
+    private final List<String> leaguesBlacklist;
+
     @Autowired
     private LeagueRepository leagueRepository;
 
-    public LeagueUpdaterService() {
-        super("leagues", "leagues");
+    public LeagueUpdaterService(
+            @Value("${api.path.leagues}") String apiPath,
+            @Value("${api.path.leagues.jsonParentKey}") String jsonParentKey,
+            @Value("#{${whitelist.sport}}") List<String> sportWhitelist,
+            @Value("#{${blacklist.leagues}}") List<String> leaguesBlacklist
+    ) {
+        super.apiPath = apiPath;
+        super.jsonParentKey = jsonParentKey;
+        this.sportWhitelist = sportWhitelist;
+        this.leaguesBlacklist = leaguesBlacklist;
     }
 
     void setProperties(JsonNode element) {
-        if (!super.config.getProperty("SPORT_WHITELIST").toLowerCase().contains(element.get("strSport").asText().toLowerCase())) {
+        if (!sportWhitelist.contains(element.get("strSport").asText())) {
             return;
         }
-        if (super.config.getProperty("LEAGUES_BLACKLIST").toLowerCase().contains(element.get("strLeague").asText().toLowerCase())) {
+        if (leaguesBlacklist.contains(element.get("strLeague").asText())) {
             return;
         }
         League league = new League();

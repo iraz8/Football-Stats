@@ -3,8 +3,6 @@ package com.football.football_stats.data_updater.entity;
 
 import javax.persistence.*;
 
-@Table(name = "country")
-
 @Entity(name = "Country")
 
 public class Country {

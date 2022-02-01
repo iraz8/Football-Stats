@@ -1,9 +1,6 @@
 package com.football.football_stats.data_updater.entity;
 
-
 import javax.persistence.*;
-
-@Table(name = "league")
 
 @Entity(name = "League")
 public class League {

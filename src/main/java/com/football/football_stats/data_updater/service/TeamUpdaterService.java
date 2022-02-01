@@ -6,21 +6,25 @@ import com.football.football_stats.data_updater.entity.Team;
 import com.football.football_stats.data_updater.repository.LeagueRepository;
 import com.football.football_stats.data_updater.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 @Service
 public class TeamUpdaterService extends CommonUpdater {
+    private final String strLeagueParam;
+
     @Autowired
     private TeamRepository teamRepository;
     @Autowired
     private LeagueRepository leagueRepository;
 
-    public TeamUpdaterService() {
-        super("teams_in_league", "teams");
+    public TeamUpdaterService(@Value("${api.path.teams_in_league}") String apiPath, @Value("${api.path.teams_in_league.jsonParentKey}") String jsonParentKey, @Value("${api.parameters.league.strLeague}") String strLeagueParam) {
+        super.apiPath = apiPath;
+        super.jsonParentKey = jsonParentKey;
+        this.strLeagueParam = strLeagueParam;
     }
 
     void setProperties(JsonNode element) {
@@ -37,17 +41,12 @@ public class TeamUpdaterService extends CommonUpdater {
         }
     }
 
-
     public void updateAllTeams() {
         Iterable<League> leagues = leagueRepository.findAll();
         leagues.forEach((league) -> {
-            try {
-                ArrayList<Pair<String, String>> queryParams = new ArrayList<>();
-                queryParams.add(Pair.of("league_param", league.getStrLeague()));
-                this.update(queryParams);
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
-            }
+            ArrayList<Pair<String, String>> queryParams = new ArrayList<>();
+            queryParams.add(Pair.of(strLeagueParam, league.getStrLeague()));
+            this.update(queryParams);
             try {
                 Thread.sleep(2100);
             } catch (InterruptedException e) {

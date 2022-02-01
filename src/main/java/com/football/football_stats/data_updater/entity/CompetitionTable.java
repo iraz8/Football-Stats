@@ -2,10 +2,8 @@ package com.football.football_stats.data_updater.entity;
 
 import javax.persistence.*;
 
-@Table(name = "table")
-
-@Entity(name = "Table")
-public class Table {
+@Entity(name = "CompetitionTable")
+public class CompetitionTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
