@@ -1,13 +1,13 @@
 package com.football.football_stats.api.controller;
 
-import com.football.football_stats.entity.CompetitionTable;
-import com.football.football_stats.entity.Country;
-import com.football.football_stats.entity.League;
-import com.football.football_stats.entity.Team;
-import com.football.football_stats.repository.CompetitionTableRepository;
-import com.football.football_stats.repository.CountryRepository;
-import com.football.football_stats.repository.LeagueRepository;
-import com.football.football_stats.repository.TeamRepository;
+import com.football.football_stats.common.entity.CompetitionTable;
+import com.football.football_stats.common.entity.Country;
+import com.football.football_stats.common.entity.League;
+import com.football.football_stats.common.entity.Team;
+import com.football.football_stats.common.repository.CompetitionTableRepository;
+import com.football.football_stats.common.repository.CountryRepository;
+import com.football.football_stats.common.repository.LeagueRepository;
+import com.football.football_stats.common.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

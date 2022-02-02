@@ -1,4 +1,4 @@
-package com.football.football_stats.entity;
+package com.football.football_stats.common.entity;
 
 import javax.persistence.*;
 

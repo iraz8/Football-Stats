@@ -1,8 +1,8 @@
 package com.football.football_stats.data_updater.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.football.football_stats.entity.League;
-import com.football.football_stats.repository.LeagueRepository;
+import com.football.football_stats.common.entity.League;
+import com.football.football_stats.common.repository.LeagueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
