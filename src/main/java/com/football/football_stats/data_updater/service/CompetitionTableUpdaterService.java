@@ -1,10 +1,10 @@
 package com.football.football_stats.data_updater.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.football.football_stats.data_updater.entity.CompetitionTable;
-import com.football.football_stats.data_updater.entity.League;
-import com.football.football_stats.data_updater.repository.CompetitionTableRepository;
-import com.football.football_stats.data_updater.repository.LeagueRepository;
+import com.football.football_stats.entity.CompetitionTable;
+import com.football.football_stats.entity.League;
+import com.football.football_stats.repository.CompetitionTableRepository;
+import com.football.football_stats.repository.LeagueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.util.Pair;
@@ -65,6 +65,7 @@ public class CompetitionTableUpdaterService extends CommonUpdater {
     }
 
     public void updateAllTables() {
+        competitionTableRepository.deleteAll();
         Iterable<League> leagues = leagueRepository.findAll();
         for (String season : seasonsWhitelist)
             leagues.forEach((league) -> {

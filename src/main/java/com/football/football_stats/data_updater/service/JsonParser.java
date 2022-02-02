@@ -15,14 +15,14 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 
 @Service
-public class JsonParser {
+class JsonParser {
     private final String apiUrl_protocol;
     private final String apiBase_url;
     private final String apiVersion;
     private final String apiFormat;
     private final String apiKey;
 
-    public JsonParser(@Value("${api.url_protocol}") String apiUrl_protocol, @Value("${api.base_url}") String apiBase_url, @Value("${api.version}") String apiVersion, @Value("${api.format}") String apiFormat, @Value("${api.key}") String apiKey) {
+    JsonParser(@Value("${api.url_protocol}") String apiUrl_protocol, @Value("${api.base_url}") String apiBase_url, @Value("${api.version}") String apiVersion, @Value("${api.format}") String apiFormat, @Value("${api.key}") String apiKey) {
         this.apiUrl_protocol = apiUrl_protocol;
         this.apiBase_url = apiBase_url;
         this.apiVersion = apiVersion;
@@ -68,7 +68,7 @@ public class JsonParser {
         return node;
     }
 
-    public JsonNode get(String jsonParentKey, String apiPath, ArrayList<Pair<String, String>> queryParams) throws NullPointerException {
+    JsonNode get(String jsonParentKey, String apiPath, ArrayList<Pair<String, String>> queryParams) throws NullPointerException {
         URI baseUri = buildURI(apiPath, queryParams);
         String json = getJson(baseUri);
         return readJson(json, jsonParentKey);
