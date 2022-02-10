@@ -11,7 +11,6 @@ abstract class CommonUpdater {
     String apiPath;
     String jsonParentKey;
 
-
     @Autowired
     JsonParser jsonParser;
 

@@ -12,12 +12,13 @@ import org.springframework.stereotype.Service;
 public class CountryUpdaterService extends CommonUpdater {
 
 
-    @Autowired
-    private CountryRepository countryRepository;
+    private final CountryRepository countryRepository;
 
-    public CountryUpdaterService(@Value("${api.path.countries}") String apiPath, @Value("${api.path.countries.jsonParentKey}") String jsonParentKey) {
+    @Autowired
+    public CountryUpdaterService(@Value("${api.path.countries}") String apiPath, @Value("${api.path.countries.jsonParentKey}") String jsonParentKey, CountryRepository countryRepository) {
         super.apiPath = apiPath;
         super.jsonParentKey = jsonParentKey;
+        this.countryRepository = countryRepository;
     }
 
     void setProperties(JsonNode element) {

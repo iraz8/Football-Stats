@@ -12,14 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DataUpdaterController {
 
+    private final LeagueUpdaterService leagueUpdaterService;
+    private final CountryUpdaterService countryUpdaterService;
+    private final TeamUpdaterService teamUpdaterService;
+    private final CompetitionTableUpdaterService competitionTableUpdaterService;
+
     @Autowired
-    private LeagueUpdaterService leagueUpdaterService;
-    @Autowired
-    private CountryUpdaterService countryUpdaterService;
-    @Autowired
-    private TeamUpdaterService teamUpdaterService;
-    @Autowired
-    private CompetitionTableUpdaterService competitionTableUpdaterService;
+    public DataUpdaterController(LeagueUpdaterService leagueUpdaterService, CountryUpdaterService countryUpdaterService, TeamUpdaterService teamUpdaterService, CompetitionTableUpdaterService competitionTableUpdaterService) {
+        this.leagueUpdaterService = leagueUpdaterService;
+        this.countryUpdaterService = countryUpdaterService;
+        this.teamUpdaterService = teamUpdaterService;
+        this.competitionTableUpdaterService = competitionTableUpdaterService;
+    }
 
     @GetMapping("/update/all")
     public String updateAll() {

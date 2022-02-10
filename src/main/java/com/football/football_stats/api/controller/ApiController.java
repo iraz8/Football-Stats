@@ -17,17 +17,18 @@ import java.util.List;
 
 @RestController
 public class ApiController {
-    @Autowired
-    CountryRepository countryRepository;
+    private final CountryRepository countryRepository;
+    private final LeagueRepository leagueRepository;
+    private final TeamRepository teamRepository;
+    private final CompetitionTableRepository competitionTableRepository;
 
     @Autowired
-    LeagueRepository leagueRepository;
-
-    @Autowired
-    TeamRepository teamRepository;
-
-    @Autowired
-    CompetitionTableRepository competitionTableRepository;
+    public ApiController(CountryRepository countryRepository, LeagueRepository leagueRepository, TeamRepository teamRepository, CompetitionTableRepository competitionTableRepository) {
+        this.countryRepository = countryRepository;
+        this.leagueRepository = leagueRepository;
+        this.teamRepository = teamRepository;
+        this.competitionTableRepository = competitionTableRepository;
+    }
 
     @GetMapping("/api/countries")
     @ResponseBody

@@ -1,16 +1,14 @@
 package com.football.football_stats.common.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity(name = "CompetitionTable")
 public class CompetitionTable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
-    @Column(name = "idStanding")
+    @Column(name = "idStanding", unique = true)
     private Integer idStanding;
 
     @Column(name = "intRank")
@@ -62,14 +60,6 @@ public class CompetitionTable {
     private Integer intPoints;
     @Column(name = "dateUpdated")
     private String dateUpdated;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Integer getIdStanding() {
         return idStanding;

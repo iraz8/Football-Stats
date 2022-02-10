@@ -19,24 +19,24 @@ public class CompetitionTableUpdaterService extends CommonUpdater {
     private final String seasonParam;
     private final List<String> seasonsWhitelist;
 
-    @Autowired
-    private CompetitionTableRepository competitionTableRepository;
+    private final CompetitionTableRepository competitionTableRepository;
+    private final LeagueRepository leagueRepository;
 
     @Autowired
-    private LeagueRepository leagueRepository;
-
     public CompetitionTableUpdaterService(
             @Value("${api.path.table.byLeagueIdAndSeason}") String apiPath,
             @Value("${api.path.table.byLeagueIdAndSeason.jsonParentKey}") String jsonParentKey,
             @Value("${api.parameters.league.idLeague}") String idLeagueParam,
             @Value("${api.parameters.season}") String seasonParam,
-            @Value("#{${whitelist.seasons}}") List<String> seasonsWhitelist
-    ) {
+            @Value("#{${whitelist.seasons}}") List<String> seasonsWhitelist,
+            CompetitionTableRepository competitionTableRepository, LeagueRepository leagueRepository) {
         super.apiPath = apiPath;
         super.jsonParentKey = jsonParentKey;
         this.seasonsWhitelist = seasonsWhitelist;
         this.seasonParam = seasonParam;
         this.idLeagueParam = idLeagueParam;
+        this.competitionTableRepository = competitionTableRepository;
+        this.leagueRepository = leagueRepository;
     }
 
     @Override

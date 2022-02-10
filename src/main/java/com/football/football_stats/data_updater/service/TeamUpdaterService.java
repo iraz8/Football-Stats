@@ -16,15 +16,16 @@ import java.util.ArrayList;
 public class TeamUpdaterService extends CommonUpdater {
     private final String strLeagueParam;
 
-    @Autowired
-    private TeamRepository teamRepository;
-    @Autowired
-    private LeagueRepository leagueRepository;
+    private final TeamRepository teamRepository;
+    private final LeagueRepository leagueRepository;
 
-    public TeamUpdaterService(@Value("${api.path.teams_in_league}") String apiPath, @Value("${api.path.teams_in_league.jsonParentKey}") String jsonParentKey, @Value("${api.parameters.league.strLeague}") String strLeagueParam) {
+    @Autowired
+    public TeamUpdaterService(@Value("${api.path.teams_in_league}") String apiPath, @Value("${api.path.teams_in_league.jsonParentKey}") String jsonParentKey, @Value("${api.parameters.league.strLeague}") String strLeagueParam, TeamRepository teamRepository, LeagueRepository leagueRepository) {
         super.apiPath = apiPath;
         super.jsonParentKey = jsonParentKey;
         this.strLeagueParam = strLeagueParam;
+        this.teamRepository = teamRepository;
+        this.leagueRepository = leagueRepository;
     }
 
     void setProperties(JsonNode element) {

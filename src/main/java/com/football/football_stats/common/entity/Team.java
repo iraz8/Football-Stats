@@ -1,16 +1,15 @@
 package com.football.football_stats.common.entity;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity(name = "Team")
 
 public class Team {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
 
+    @Id
     @Column(name = "idTeam", unique = true)
     private int idTeam;
 
@@ -25,14 +24,6 @@ public class Team {
 
     @Column(name = "strStadium")
     private String strStadium;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public int getIdTeam() {
         return idTeam;
