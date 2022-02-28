@@ -7,6 +7,7 @@ Technologies:
   - Spring Boot
   - PostgreSQL
   - Docker
+  - Swagger (using SpringDoc)
 
 Contains:
 - dockerfiles/docker-compose.yml file to generate a postgres db container
