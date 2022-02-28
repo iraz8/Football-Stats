@@ -5,6 +5,7 @@
 Technologies:
   - Java
   - Spring Boot
+  - Angular
   - PostgreSQL
   - Docker
   - Swagger (using SpringDoc)
