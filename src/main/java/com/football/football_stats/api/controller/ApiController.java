@@ -9,12 +9,14 @@ import com.football.football_stats.common.repository.CountryRepository;
 import com.football.football_stats.common.repository.LeagueRepository;
 import com.football.football_stats.common.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class ApiController {
     private final CountryRepository countryRepository;
