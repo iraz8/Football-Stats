@@ -7,8 +7,9 @@ import {DataServiceComponent} from "../data-service/data-service.component";
   templateUrl: './country.component.html',
   styleUrls: ['./country.component.css']
 })
-export class CountryComponent implements OnInit {
 
+
+export class CountryComponent implements OnInit {
   countries: Country[] = [];
 
   constructor(private dataService: DataServiceComponent) {
@@ -18,9 +19,7 @@ export class CountryComponent implements OnInit {
     this.getCountries();
   }
 
-
   getCountries(): void {
     this.dataService.getCountries().subscribe(countries => this.countries = countries);
-    console.log("country.component");
   }
 }

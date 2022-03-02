@@ -1,4 +1,6 @@
 <h2>Countries</h2>
-<div *ngFor="let country of countries">
-  {{country.name_en}}
-</div>
+<mat-grid-list cols="4" rowHeight="75px">
+  <mat-grid-tile *ngFor="let country of countries">
+    {{country.name_en}}
+  </mat-grid-tile>
+</mat-grid-list>
