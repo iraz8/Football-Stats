@@ -14,12 +14,15 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MatRippleModule} from "@angular/material/core";
+import {CompetitionTableComponent} from './competition-table/competition-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataServiceComponent,
-    CountryComponent
+    CountryComponent,
+    CompetitionTableComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatGridListModule,
     MatMenuModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

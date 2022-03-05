@@ -1,14 +1,15 @@
 # [WIP] Football Stats
 
- Work in progress project
+Work in progress project
 
 Technologies:
-  - Java
-  - Spring Boot
-  - Angular
-  - PostgreSQL
-  - Docker
-  - Swagger (using SpringDoc)
+
+- Java
+- Spring Boot
+- Angular
+- PostgreSQL
+- Docker
+- Swagger (using SpringDoc)
 
 Contains:
 

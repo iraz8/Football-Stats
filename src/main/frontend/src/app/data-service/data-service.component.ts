@@ -4,6 +4,7 @@ import {catchError, Observable, of, tap} from "rxjs";
 
 import {Country} from "../entities/Country"
 import {MessageService} from "./message.service";
+import {League} from "../entities/League";
 
 @Component({
   selector: 'app-data-service',
@@ -21,7 +22,9 @@ export class DataServiceComponent {
       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
     })
   };
-  private countryUrl = 'http://localhost:8080/api/countries'
+  private countryUrl = 'http://localhost:8080/api/countries';
+  private leaguesUrl = 'http://localhost:8080/api/leagues';
+  private tableUrl = 'http://localhost:8080/api/table';
 
   constructor(
     private http: HttpClient,
@@ -32,8 +35,16 @@ export class DataServiceComponent {
   getCountries(): Observable<Country[]> {
     return this.http.get<Country[]>(this.countryUrl)
       .pipe(
-        tap(_ => this.log('fetched heroes')),
+        tap(_ => this.log('fetched countries')),
         catchError(this.handleError<Country[]>('getCountries', []))
+      );
+  }
+
+  getLeagues(): Observable<League[]> {
+    return this.http.get<League[]>(this.leaguesUrl)
+      .pipe(
+        tap(_ => this.log('fetched leagues')),
+        catchError(this.handleError<League[]>('getLeagues', []))
       );
   }
 
@@ -45,7 +56,6 @@ export class DataServiceComponent {
    * @param result - optional value to return as the observable result
    */
   private handleError<T>(operation = 'operation', result?: T) {
-    console.log("aaaaa");
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

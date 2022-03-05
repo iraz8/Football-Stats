@@ -9,10 +9,7 @@ import com.football.football_stats.common.repository.CountryRepository;
 import com.football.football_stats.common.repository.LeagueRepository;
 import com.football.football_stats.common.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,6 +39,12 @@ public class ApiController {
     @ResponseBody
     public List<League> getAllLeagues() {
         return leagueRepository.findAll();
+    }
+
+    @GetMapping("/api/table")
+    @ResponseBody
+    public List<CompetitionTable> getAllLeagues(@RequestParam String competition_name) {
+        return competitionTableRepository.findAllByStrLeagueOrderByIntRankAsc(competition_name);
     }
 
     @GetMapping("/api/teams")

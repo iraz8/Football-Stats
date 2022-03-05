@@ -1,8 +1,9 @@
 .mat-menu-item {
-  background-color: rgba(63, 79, 179, 0.7);
+  /*background-color: rgba(63, 79, 179, 0.7);*/
   border-radius: 5px;
   text-decoration: none;
-  border-style: solid;
+  /*border-style: solid;*/
   /*border-color: #000000;*/
-  border-width: 1px;
+  /*border-width: 1px;*/
+  font-size: 20px;
 }

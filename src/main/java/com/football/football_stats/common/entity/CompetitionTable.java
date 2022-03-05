@@ -52,12 +52,16 @@ public class CompetitionTable {
 
     @Column(name = "intGoalsFor")
     private Integer intGoalsFor;
+
     @Column(name = "intGoalsAgainst")
     private Integer intGoalsAgainst;
+
     @Column(name = "intGoalDifference")
     private Integer intGoalDifference;
+
     @Column(name = "intPoints")
     private Integer intPoints;
+
     @Column(name = "dateUpdated")
     private String dateUpdated;
 
