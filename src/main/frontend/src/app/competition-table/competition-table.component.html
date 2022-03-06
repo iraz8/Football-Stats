@@ -1,6 +1,12 @@
 <h2>Leagues</h2>
-<mat-grid-list cols="4" rowHeight="75px">
-  <mat-grid-tile *ngFor="let league of leagues">
-    {{league.strLeague}}
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-accordion *ngFor="let league of leagues">
+  <mat-expansion-panel (opened)="getCompetitionTable(league.strLeague)">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{league.strLeague}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p *ngFor="let teamResults of competitionTable" class="teamResult">
+      {{formatLine(teamResults)}}</p>
+  </mat-expansion-panel>
+</mat-accordion>

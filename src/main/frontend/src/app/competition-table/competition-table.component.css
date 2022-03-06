@@ -1,0 +1,19 @@
+.mat-expansion-panel-header-title {
+  color: #ffffff;
+  background-color: #3f50b4;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.mat-expansion-panel {
+  width: 25%;
+}
+
+
+.teamResult {
+  width: 75%;
+  color: #ffffff;
+  background-image: linear-gradient(to right, darkblue, rgba(0, 31, 255, 0.26));
+  border-radius: 5px;
+  padding: 5px;
+}

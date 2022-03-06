@@ -5,6 +5,7 @@ import {catchError, Observable, of, tap} from "rxjs";
 import {Country} from "../entities/Country"
 import {MessageService} from "./message.service";
 import {League} from "../entities/League";
+import {CompetitionTable} from "../entities/CompetitionTable";
 
 @Component({
   selector: 'app-data-service',
@@ -24,13 +25,23 @@ export class DataServiceComponent {
   };
   private countryUrl = 'http://localhost:8080/api/countries';
   private leaguesUrl = 'http://localhost:8080/api/leagues';
-  private tableUrl = 'http://localhost:8080/api/table';
+  private competitionTableUrl = 'http://localhost:8080/api/table';
+  private competitionNameParamKey = "competition_name";
+  private seasonParamKey = "season";
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) {
   }
 
+  getCompetitionTable(competitionName: string | undefined, season: string = "2021-2022"): Observable<CompetitionTable[]> {
+    let params: string = `?${this.competitionNameParamKey}=${competitionName}&${this.seasonParamKey}=${season}`;
+    return this.http.get<CompetitionTable[]>(this.competitionTableUrl + params)
+      .pipe(
+        tap(_ => this.log('fetched competitionTables')),
+        catchError(this.handleError<CompetitionTable[]>('getCompetitionTables', []))
+      );
+  }
 
   getCountries(): Observable<Country[]> {
     return this.http.get<Country[]>(this.countryUrl)
@@ -71,7 +82,7 @@ export class DataServiceComponent {
 
   /** Log a DataService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.messageService.add(`DataServiceComponent: ${message}`);
   }
 }
 

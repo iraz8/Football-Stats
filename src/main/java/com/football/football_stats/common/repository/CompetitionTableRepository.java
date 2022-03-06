@@ -8,5 +8,6 @@ import java.util.List;
 public interface CompetitionTableRepository extends CrudRepository<CompetitionTable, Long> {
     List<CompetitionTable> findAll();
 
-    List<CompetitionTable> findAllByStrLeagueOrderByIntRankAsc(String strLeague);
+    //    List<CompetitionTable> findAllByStrLeagueOrderByIntRankAsc(String strLeague);
+    List<CompetitionTable> findAllByStrLeagueAndStrSeasonOrderByIntRankAsc(String strLeague, String strSeason);
 }

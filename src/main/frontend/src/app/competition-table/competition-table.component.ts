@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {League} from "../entities/League";
 import {DataServiceComponent} from "../data-service/data-service.component";
+import {CompetitionTable} from "../entities/CompetitionTable";
 
 @Component({
   selector: 'app-competition-table',
@@ -8,7 +9,10 @@ import {DataServiceComponent} from "../data-service/data-service.component";
   styleUrls: ['./competition-table.component.css']
 })
 export class CompetitionTableComponent implements OnInit {
+  // openedLeague: string | undefined = undefined;
+
   leagues: League[] = [];
+  competitionTable: CompetitionTable[] = [];
 
   constructor(private dataService: DataServiceComponent) {
   }
@@ -19,5 +23,13 @@ export class CompetitionTableComponent implements OnInit {
 
   getLeagues(): void {
     this.dataService.getLeagues().subscribe(leagues => this.leagues = leagues);
+  }
+
+  getCompetitionTable(leagueName: string): void {
+    this.dataService.getCompetitionTable(leagueName).subscribe(table => this.competitionTable = table);
+  }
+
+  formatLine(resultsLine: CompetitionTable): string {
+    return `${resultsLine.intRank}. ${resultsLine.strTeam} ${resultsLine.intPoints}`;
   }
 }
