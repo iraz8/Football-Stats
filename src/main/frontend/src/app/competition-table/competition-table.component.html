@@ -14,7 +14,7 @@
 <div class="container">
   <div class="leagues-list">
     <div *ngFor="let league of leagues">
-      <button color="primary" mat-flat-button>{{league.strLeague}}
+      <button (click)="printCompetitionTable(league)" color="primary" mat-flat-button>{{league.strLeague}}
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>

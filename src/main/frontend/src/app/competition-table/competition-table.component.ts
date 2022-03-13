@@ -32,4 +32,14 @@ export class CompetitionTableComponent implements OnInit {
   formatLine(resultsLine: CompetitionTable): string {
     return `${resultsLine.intRank}. ${resultsLine.strTeam} ${resultsLine.intPoints}`;
   }
+
+  async printCompetitionTable(league: League) {
+    this.getCompetitionTable(league.strLeague);
+    await new Promise(r => setTimeout(r, 2000));
+    console.log(this.competitionTable);
+    for (let resultsLine of this.competitionTable) {
+      console.log(resultsLine.strTeam);
+    }
+    console.log("Finished!");
+  }
 }
