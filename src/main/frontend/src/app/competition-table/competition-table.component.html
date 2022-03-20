@@ -1,16 +1,4 @@
 <h2>Leagues</h2>
-<!--<mat-accordion *ngFor="let league of leagues">-->
-<!--  <mat-expansion-panel (opened)="getCompetitionTable(league.strLeague)">-->
-<!--    <mat-expansion-panel-header>-->
-<!--      <mat-panel-title>-->
-<!--        {{league.strLeague}}-->
-<!--      </mat-panel-title>-->
-<!--    </mat-expansion-panel-header>-->
-<!--    <p *ngFor="let teamResults of competitionTable" class="teamResult">-->
-<!--      {{formatLine(teamResults)}}</p>-->
-<!--  </mat-expansion-panel>-->
-<!--</mat-accordion>-->
-
 <div class="container">
   <div class="leagues-list">
     <div *ngFor="let league of leagues">
@@ -76,10 +64,5 @@
       <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
       <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
     </table>
-    <!--    <div *ngFor="let resultRow of competitionTable">-->
-
-
-    <!--        {{resultRow.strTeam}}-->
-    <!--      </div>-->
   </div>
 </div>
