@@ -17,6 +17,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatRippleModule} from "@angular/material/core";
 import {CompetitionTableComponent} from './competition-table/competition-table.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatButtonModule,
     MatIconModule,
     MatRippleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

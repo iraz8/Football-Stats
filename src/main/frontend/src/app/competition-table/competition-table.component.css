@@ -22,4 +22,24 @@
 
 .league-table {
   flex: 4;
+
+}
+
+
+.mat-table {
+  width: 80%;
+}
+
+.badge {
+
+  width: 40%;
+  align-content: center;
+}
+
+.rank-column {
+  /*width: 10px;*/
+}
+
+.rank {
+  /*align-content: center;*/
 }

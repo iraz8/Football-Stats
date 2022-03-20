@@ -9,7 +9,7 @@ import {CompetitionTable} from "../entities/CompetitionTable";
   styleUrls: ['./competition-table.component.css']
 })
 export class CompetitionTableComponent implements OnInit {
-  // openedLeague: string | undefined = undefined;
+  displayedColumns: string[] = ['Rank', 'Badge', 'Name', 'Played', 'Win', 'Draw', 'Loss', 'Goals', 'Form', 'Points'];
 
   leagues: League[] = [];
   competitionTable: CompetitionTable[] = [];
@@ -33,13 +33,7 @@ export class CompetitionTableComponent implements OnInit {
     return `${resultsLine.intRank}. ${resultsLine.strTeam} ${resultsLine.intPoints}`;
   }
 
-  async printCompetitionTable(league: League) {
+  printCompetitionTable(league: League) {
     this.getCompetitionTable(league.strLeague);
-    await new Promise(r => setTimeout(r, 2000));
-    console.log(this.competitionTable);
-    for (let resultsLine of this.competitionTable) {
-      console.log(resultsLine.strTeam);
-    }
-    console.log("Finished!");
   }
 }

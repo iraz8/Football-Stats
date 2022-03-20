@@ -20,5 +20,66 @@
     </div>
   </div>
 
-  <div class="league-table">Test column 2</div>
+  <div class="league-table">
+    <table [dataSource]="competitionTable" class="mat-elevation-z10" mat-table>
+      <ng-container class="rank-column" matColumnDef="Rank">
+        <th *matHeaderCellDef mat-header-cell>Rank</th>
+        <td *matCellDef="let element" class="rank" mat-cell> {{element.intRank}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Badge">
+        <th *matHeaderCellDef mat-header-cell>Badge</th>
+        <td *matCellDef="let element" mat-cell><img alt="team_badge" class="badge" src="{{element.strTeamBadge}}"></td>
+      </ng-container>
+
+      <ng-container matColumnDef="Name">
+        <th *matHeaderCellDef mat-header-cell>Name</th>
+        <td *matCellDef="let element" mat-cell> {{element.strTeam}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Played">
+        <th *matHeaderCellDef mat-header-cell>Matches Played</th>
+        <td *matCellDef="let element" mat-cell> {{element.intPlayed}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Win">
+        <th *matHeaderCellDef mat-header-cell>Wins</th>
+        <td *matCellDef="let element" mat-cell> {{element.intWin}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Draw">
+        <th *matHeaderCellDef mat-header-cell>Draw</th>
+        <td *matCellDef="let element" mat-cell> {{element.intDraw}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Loss">
+        <th *matHeaderCellDef mat-header-cell>Loss</th>
+        <td *matCellDef="let element" mat-cell> {{element.intLoss}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Goals">
+        <th *matHeaderCellDef mat-header-cell>Goals</th>
+        <td *matCellDef="let element" mat-cell> {{element.intGoalsFor}}:{{element.intGoalsAgainst}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Form">
+        <th *matHeaderCellDef mat-header-cell>Form</th>
+        <td *matCellDef="let element" mat-cell> {{element.strForm}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Points">
+        <th *matHeaderCellDef mat-header-cell>Points</th>
+        <td *matCellDef="let element" mat-cell> {{element.intPoints}} </td>
+      </ng-container>
+
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+    <!--    <div *ngFor="let resultRow of competitionTable">-->
+
+
+    <!--        {{resultRow.strTeam}}-->
+    <!--      </div>-->
+  </div>
 </div>
