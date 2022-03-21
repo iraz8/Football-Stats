@@ -12,6 +12,8 @@ import {DataServiceComponent} from "../data-service/data-service.component";
 export class CountryComponent implements OnInit {
   countries: Country[] = [];
 
+  title = 'Countries';
+
   constructor(private dataService: DataServiceComponent) {
   }
 

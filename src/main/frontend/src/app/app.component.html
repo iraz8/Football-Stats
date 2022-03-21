@@ -1,20 +1,38 @@
-<button [matMenuTriggerFor]="menu" mat-button>
-  <mat-icon>menu</mat-icon>
-  Menu
-</button>
+<!--<button [matMenuTriggerFor]="menu" mat-button>-->
+<!--  <mat-icon>menu</mat-icon>-->
+<!--  Menu-->
+<!--</button>-->
+
+
+<p>
+  <mat-toolbar color="primary">
+    <button [matMenuTriggerFor]="menu" aria-label="Menu" class="example-icon" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="title">{{getTitle()}}</span>
+    <!--    <span class="example-spacer"></span>-->
+    <!--    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
+    <!--      <mat-icon>favorite</mat-icon>-->
+    <!--    </button>-->
+    <!--    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">-->
+    <!--      <mat-icon>share</mat-icon>-->
+    <!--    </button>-->
+  </mat-toolbar>
+</p>
+
 <mat-menu #menu="matMenu" class="mat-menu-content">
   <button mat-menu-item>
-    <a routerLink="/" routerLinkActive="active">
+    <a (click)="setTitle('Home')" routerLink="/" routerLinkActive="active">
       <mat-icon>home</mat-icon>
       Home</a>
   </button>
   <button mat-menu-item>
-    <a routerLink="/country" routerLinkActive="active">
+    <a (click)="setTitle('Countries')" routerLink="/country" routerLinkActive="active">
       <mat-icon>travel_explore</mat-icon>
       Countries</a>
   </button>
   <button mat-menu-item>
-    <a routerLink="/tables" routerLinkActive="active">
+    <a (click)="setTitle('Tables')" routerLink="/tables" routerLinkActive="active">
       <mat-icon>toc</mat-icon>
       Tables</a>
   </button>

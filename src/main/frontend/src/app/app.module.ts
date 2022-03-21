@@ -18,13 +18,16 @@ import {MatRippleModule} from "@angular/material/core";
 import {CompetitionTableComponent} from './competition-table/competition-table.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTableModule} from "@angular/material/table";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataServiceComponent,
     CountryComponent,
-    CompetitionTableComponent
+    CompetitionTableComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import {MatTableModule} from "@angular/material/table";
     MatIconModule,
     MatRippleModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
