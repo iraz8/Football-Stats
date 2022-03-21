@@ -6,6 +6,7 @@ import {Country} from "../entities/Country"
 import {MessageService} from "./message.service";
 import {League} from "../entities/League";
 import {CompetitionTable} from "../entities/CompetitionTable";
+import {Team} from "../entities/Team";
 
 @Component({
   selector: 'app-data-service',
@@ -26,6 +27,7 @@ export class DataServiceComponent {
   private countryUrl = 'http://localhost:8080/api/countries';
   private leaguesUrl = 'http://localhost:8080/api/leagues';
   private competitionTableUrl = 'http://localhost:8080/api/table';
+  private teamsUrl = 'http://localhost:8080/api/teams';
   private competitionNameParamKey = "competition_name";
   private seasonParamKey = "season";
 
@@ -56,6 +58,15 @@ export class DataServiceComponent {
       .pipe(
         tap(_ => this.log('fetched leagues')),
         catchError(this.handleError<League[]>('getLeagues', []))
+      );
+  }
+
+  getTeamsDetailsByLeague(competitionName: string | undefined): Observable<Team[]> {
+    let teamsDetailsByLeagueUrl = this.teamsUrl + "/" + competitionName
+    return this.http.get<Team[]>(teamsDetailsByLeagueUrl)
+      .pipe(
+        tap(_ => this.log('fetched teams')),
+        catchError(this.handleError<Team[]>('getTeamsDetailsByLeague', []))
       );
   }
 

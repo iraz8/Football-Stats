@@ -47,11 +47,18 @@ public class ApiController {
         return competitionTableRepository.findAllByStrLeagueAndStrSeasonOrderByIntRankAsc(competition_name, season);
     }
 
+    @GetMapping("/api/teams/{competition_name}")
+    @ResponseBody
+    public List<Team> getAllTeamsByCompetition(@PathVariable String competition_name) {
+        return teamRepository.findAllByStrLeague(competition_name);
+    }
+
     @GetMapping("/api/teams")
     @ResponseBody
     public List<Team> getAllTeams() {
         return teamRepository.findAll();
     }
+
 
     @GetMapping("/api/competition-tables")
     @ResponseBody

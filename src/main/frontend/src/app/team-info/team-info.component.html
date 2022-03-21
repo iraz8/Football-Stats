@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="leagues-list">
+    <div *ngFor="let league of leagues">
+      <button (click)="printTeamsDetailsByLeague(league)" color="primary" mat-flat-button>{{league.strLeague}}
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="league-table">
+    <!--    <table [dataSource]="competitionTable" class="mat-elevation-z10" mat-table>-->
+
+    <!--      <ng-container matColumnDef="Badge">-->
+    <!--        <th *matHeaderCellDef mat-header-cell>Badge</th>-->
+    <!--        <td *matCellDef="let element" mat-cell><img alt="team_badge" class="badge" src="{{element.strTeamBadge}}"></td>-->
+    <!--      </ng-container>-->
+
+    <!--      <ng-container matColumnDef="Name">-->
+    <!--        <th *matHeaderCellDef mat-header-cell>Name</th>-->
+    <!--        <td *matCellDef="let element" mat-cell> {{element.strTeam}} </td>-->
+    <!--      </ng-container>-->
+
+
+    <!--      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>-->
+    <!--      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>-->
+    <!--    </table>-->
+
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let team of teamsDetails">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{team.str_team}}
+          </mat-panel-title>
+          <mat-panel-description>
+            <img alt="str_team_badge" class="badge" src="{{team.str_team_badge}}">
+          </mat-panel-description>
+
+        </mat-expansion-panel-header>
+
+        {{team.str_descriptionen}}
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </div>
+</div>

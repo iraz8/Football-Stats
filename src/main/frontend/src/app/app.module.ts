@@ -20,6 +20,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTableModule} from "@angular/material/table";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {TeamInfoComponent} from './team-info/team-info.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
     DataServiceComponent,
     CountryComponent,
     CompetitionTableComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TeamInfoComponent
   ],
   imports: [
     BrowserModule,

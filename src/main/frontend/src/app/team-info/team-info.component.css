@@ -1,0 +1,43 @@
+.mat-flat-button {
+  color: #ffffff;
+  width: 80%;
+  margin: 5px;
+}
+
+.mat-icon {
+  height: 30px;
+  margin: 5px;
+  float: right;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  display: flex;
+  min-width: 100vh;
+}
+
+.leagues-list {
+  flex: 1;
+}
+
+.league-table {
+  flex: 4;
+
+}
+
+
+.mat-table {
+  width: 80%;
+}
+
+.badge {
+  width: 5%;
+}
+
+.rank-column {
+  /*width: 10px;*/
+}
+
+.rank {
+  /*align-content: center;*/
+}

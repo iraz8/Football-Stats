@@ -36,5 +36,10 @@
       <mat-icon>toc</mat-icon>
       Tables</a>
   </button>
+  <button mat-menu-item>
+    <a (click)="setTitle('Team info')" routerLink="/team-info" routerLinkActive="active">
+      <mat-icon>info</mat-icon>
+      Team info</a>
+  </button>
 </mat-menu>
 <router-outlet></router-outlet>

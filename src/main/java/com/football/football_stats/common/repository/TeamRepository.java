@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TeamRepository extends CrudRepository<Team, Long> {
     List<Team> findAll();
+
+    List<Team> findAllByStrLeague(String competitionName);
 }
