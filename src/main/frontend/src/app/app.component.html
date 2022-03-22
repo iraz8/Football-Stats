@@ -14,11 +14,6 @@
       Home</a>
   </button>
   <button mat-menu-item>
-    <a (click)="setTitle('Countries')" routerLink="/country" routerLinkActive="active">
-      <mat-icon>travel_explore</mat-icon>
-      Countries</a>
-  </button>
-  <button mat-menu-item>
     <a (click)="setTitle('Tables')" routerLink="/tables" routerLinkActive="active">
       <mat-icon>toc</mat-icon>
       Tables</a>
@@ -27,6 +22,11 @@
     <a (click)="setTitle('Team info')" routerLink="/team-info" routerLinkActive="active">
       <mat-icon>info</mat-icon>
       Team info</a>
+  </button>
+  <button mat-menu-item>
+    <a (click)="setTitle('Countries')" routerLink="/country" routerLinkActive="active">
+      <mat-icon>travel_explore</mat-icon>
+      Countries</a>
   </button>
 </mat-menu>
 <router-outlet></router-outlet>

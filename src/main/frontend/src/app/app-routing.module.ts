@@ -6,9 +6,9 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {TeamInfoComponent} from "./team-info/team-info.component";
 
 const routes: Routes = [
-  {path: 'country', component: CountryComponent},
   {path: 'tables', component: CompetitionTableComponent},
   {path: 'team-info', component: TeamInfoComponent},
+  {path: 'country', component: CountryComponent},
   {path: '', redirectTo: 'tables', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
