@@ -62,11 +62,11 @@ export class DataServiceComponent {
   }
 
   getTeamsDetailsByLeague(competitionName: string | undefined): Observable<Team[]> {
-    let teamsDetailsByLeagueUrl = this.teamsUrl + "/" + competitionName
+    let teamsDetailsByLeagueUrl = `${this.teamsUrl}/${competitionName}`;
     return this.http.get<Team[]>(teamsDetailsByLeagueUrl)
       .pipe(
-        tap(_ => this.log('fetched teams')),
-        catchError(this.handleError<Team[]>('getTeamsDetailsByLeague', []))
+        tap(_ => this.log(`fetched teams from ${competitionName}`)),
+        catchError(this.handleError<Team[]>(`getTeamsDetailsByLeague from ${competitionName}`, []))
       );
   }
 

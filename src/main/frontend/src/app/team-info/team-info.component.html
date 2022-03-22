@@ -1,46 +1,67 @@
 <div class="container">
   <div class="leagues-list">
-    <div *ngFor="let league of leagues">
-      <button (click)="printTeamsDetailsByLeague(league)" color="primary" mat-flat-button>{{league.strLeague}}
+    <div *ngFor="let league of leagues | async">
+      <button (click)="clickedLeague = league; getTeamsDetailsByLeagueName(league)" color="primary"
+              mat-flat-button>{{league.strLeague}}
         <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
   </div>
 
   <div class="league-table">
-    <!--    <table [dataSource]="competitionTable" class="mat-elevation-z10" mat-table>-->
-
-    <!--      <ng-container matColumnDef="Badge">-->
-    <!--        <th *matHeaderCellDef mat-header-cell>Badge</th>-->
-    <!--        <td *matCellDef="let element" mat-cell><img alt="team_badge" class="badge" src="{{element.strTeamBadge}}"></td>-->
-    <!--      </ng-container>-->
-
-    <!--      <ng-container matColumnDef="Name">-->
-    <!--        <th *matHeaderCellDef mat-header-cell>Name</th>-->
-    <!--        <td *matCellDef="let element" mat-cell> {{element.strTeam}} </td>-->
-    <!--      </ng-container>-->
-
-
-    <!--      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>-->
-    <!--      <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>-->
-    <!--    </table>-->
-
-
     <mat-accordion>
-      <mat-expansion-panel *ngFor="let team of teamsDetails">
+      <mat-expansion-panel *ngFor="let teamDetails of teamsDetailsByLeague | async">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{team.str_team}}
+            {{teamDetails.strTeam}}
           </mat-panel-title>
           <mat-panel-description>
-            <img alt="str_team_badge" class="badge" src="{{team.str_team_badge}}">
+            <img alt="str_team_badge" class="badge" src="{{teamDetails.strTeamBadge}}">
           </mat-panel-description>
-
         </mat-expansion-panel-header>
 
-        {{team.str_descriptionen}}
-      </mat-expansion-panel>
+        <mat-card *ngIf="teamDetails.strTeamShort!=='null'">{{teamDetails.strTeamShort}}</mat-card>
+        <mat-card *ngIf="teamDetails.strCountry!=='null'"><b>Country: </b>  {{teamDetails.strCountry}}</mat-card>
+        <mat-card *ngIf="teamDetails.intFormedYear!==0"><b>Formed Year: </b> {{teamDetails.intFormedYear}}
+        </mat-card>
+        <mat-card *ngIf="teamDetails.strFacebook!=='null'"><b>Facebook: </b> <a
+          href="//{{teamDetails.strFacebook}}" target="_blank">{{teamDetails.strFacebook}}</a></mat-card>
+        <mat-card *ngIf="teamDetails.strTwitter!=='null'"><b>Twitter: </b> <a
+          href="//{{teamDetails.strTwitter}}" target="_blank">{{teamDetails.strTwitter}}</a></mat-card>
+        <mat-card *ngIf="teamDetails.strInstagram!=='null'"><b>Instagram: </b><a
+          href="//{{teamDetails.strInstagram}}" target="_blank">{{teamDetails.strInstagram}}</a></mat-card>
+        <mat-card *ngIf="teamDetails.strWebsite!=='null'"><b>Website: </b><a
+          href="//{{teamDetails.strWebsite}}" target="_blank">{{teamDetails.strWebsite}}</a></mat-card>
+        <mat-card *ngIf="teamDetails.strRss!=='null'"><b>RSS: </b><a
+          href="//{{teamDetails.strRss}}" target="_blank">{{teamDetails.strRss}}</a></mat-card>
+        <mat-card *ngIf="teamDetails.strTeamJersey!=='null'"><b>Team Jersey: </b> <img alt="str_team_jersey"
+                                                                                       class="badge"
+                                                                                       src="{{teamDetails.strTeamJersey}}">
+        </mat-card>
+        <mat-card *ngIf="teamDetails.strDescriptionEN!=='null'"><b>Description: </b>  {{teamDetails.strDescriptionEN}}
+        </mat-card>
+        <mat-card *ngIf="teamDetails.strStadium!=='null'">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <b> Stadium: </b>  {{teamDetails.strStadium}}
+                </mat-panel-title>
+                <mat-panel-description *ngIf="teamDetails.strStadiumThumb!=='null'">
+                  <img alt="str_stadium_thumb" class="badge" src="{{teamDetails.strStadiumThumb}}">
+                </mat-panel-description>
+              </mat-expansion-panel-header>
 
+              <mat-card *ngIf="teamDetails.strStadiumLocation!=='null'">
+                <b> Location: </b>  {{teamDetails.strStadiumLocation}}</mat-card>
+              <mat-card *ngIf="teamDetails.strStadiumDescription!=='null'">
+                <b> Description: </b>  {{teamDetails.strStadiumDescription}}</mat-card>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card>
+
+      </mat-expansion-panel>
     </mat-accordion>
   </div>
 </div>
