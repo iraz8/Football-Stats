@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: 'country', component: CountryComponent},
   {path: 'tables', component: CompetitionTableComponent},
   {path: 'team-info', component: TeamInfoComponent},
-  {path: '', redirectTo: '', pathMatch: 'full'},
+  {path: '', redirectTo: 'tables', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ];
 

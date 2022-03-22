@@ -1,6 +1,6 @@
 .mat-flat-button {
   color: #ffffff;
-  width: 80%;
+  width: 90%;
   margin: 5px;
 }
 
@@ -25,13 +25,12 @@
 
 }
 
-
 .mat-table {
   width: 80%;
 }
 
 .badge {
-  width: 4%;
+  width: 5%;
 }
 
 .rank-column {
@@ -56,5 +55,14 @@
 
 
 .mat-panel-description {
-  width: 150%;
+  text-align: left;
+}
+
+.key {
+  white-space: nowrap;
+}
+
+.stadium-img {
+  width: 100%;
+  height: auto;
 }

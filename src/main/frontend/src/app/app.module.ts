@@ -21,6 +21,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {TeamInfoComponent} from './team-info/team-info.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {TeamInfoComponent} from './team-info/team-info.component';
     MatRippleModule,
     MatExpansionModule,
     MatTableModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
