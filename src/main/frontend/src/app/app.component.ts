@@ -11,6 +11,11 @@ export class AppComponent {
   public constructor(private titleService: Title) {
   }
 
+  ngOnInit(): void {
+    this.setTitle("Home");
+  }
+
+
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
   }
