@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface LeagueRepository extends CrudRepository<League, Long> {
     List<League> findAll();
+
+    League findLeagueByIdLeague(Integer idLeague);
 }

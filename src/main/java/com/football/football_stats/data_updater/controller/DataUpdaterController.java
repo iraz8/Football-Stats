@@ -1,9 +1,6 @@
 package com.football.football_stats.data_updater.controller;
 
-import com.football.football_stats.data_updater.service.CompetitionTableUpdaterService;
-import com.football.football_stats.data_updater.service.CountryUpdaterService;
-import com.football.football_stats.data_updater.service.LeagueUpdaterService;
-import com.football.football_stats.data_updater.service.TeamUpdaterService;
+import com.football.football_stats.data_updater.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,13 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class DataUpdaterController {
 
     private final LeagueUpdaterService leagueUpdaterService;
+    private final LeagueDetailsUpdaterService leagueDetailsUpdaterService;
     private final CountryUpdaterService countryUpdaterService;
     private final TeamUpdaterService teamUpdaterService;
     private final CompetitionTableUpdaterService competitionTableUpdaterService;
 
     @Autowired
-    public DataUpdaterController(LeagueUpdaterService leagueUpdaterService, CountryUpdaterService countryUpdaterService, TeamUpdaterService teamUpdaterService, CompetitionTableUpdaterService competitionTableUpdaterService) {
+    public DataUpdaterController(LeagueUpdaterService leagueUpdaterService, LeagueDetailsUpdaterService leagueDetailsUpdaterService, CountryUpdaterService countryUpdaterService, TeamUpdaterService teamUpdaterService, CompetitionTableUpdaterService competitionTableUpdaterService) {
         this.leagueUpdaterService = leagueUpdaterService;
+        this.leagueDetailsUpdaterService = leagueDetailsUpdaterService;
         this.countryUpdaterService = countryUpdaterService;
         this.teamUpdaterService = teamUpdaterService;
         this.competitionTableUpdaterService = competitionTableUpdaterService;
@@ -37,6 +36,7 @@ public class DataUpdaterController {
     @GetMapping("/update/leagues")
     public String updateLeagues() {
         leagueUpdaterService.update();
+        leagueDetailsUpdaterService.update();
         return "Leagues updated!";
     }
 

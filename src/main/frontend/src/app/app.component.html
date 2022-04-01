@@ -24,6 +24,11 @@
       Team info</a>
   </button>
   <button mat-menu-item>
+    <a (click)="setTitle('Players info')" routerLink="/players-info" routerLinkActive="active">
+      <mat-icon>contact_page</mat-icon>
+      Players info</a>
+  </button>
+  <button mat-menu-item>
     <a (click)="setTitle('Countries')" routerLink="/country" routerLinkActive="active">
       <mat-icon>travel_explore</mat-icon>
       Countries</a>

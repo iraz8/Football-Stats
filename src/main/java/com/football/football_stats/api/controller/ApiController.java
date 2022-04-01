@@ -41,6 +41,13 @@ public class ApiController {
         return leagueRepository.findAll();
     }
 
+    @GetMapping("/api/leagues/{country_name}")
+    @ResponseBody
+    public List<Team> getAllLeaguesByCountry(@PathVariable String country_name) {
+        return teamRepository.findAllByStrLeague(country_name);
+    }
+
+
     @GetMapping("/api/table")
     @ResponseBody
     public List<CompetitionTable> getAllLeagues(@RequestParam String competition_name, @RequestParam String season) {

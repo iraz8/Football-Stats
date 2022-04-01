@@ -45,6 +45,4 @@ public class LeagueUpdaterService extends CommonUpdater {
         league.setStrLeagueAlternate(element.get("strLeagueAlternate").asText());
         leagueRepository.save(league);
     }
-
-
 }
