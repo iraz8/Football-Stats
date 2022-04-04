@@ -56,7 +56,7 @@ public class League {
     @Column(name = "strRSS")
     private String strRSS;
 
-    @Column(name = "strDescriptionEN")
+    @Column(name = "strDescriptionEN", length = 50000)
     private String strDescriptionEN;
 
     @Column(name = "strTvRights")

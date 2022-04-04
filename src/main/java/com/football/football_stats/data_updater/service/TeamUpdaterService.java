@@ -63,7 +63,8 @@ public class TeamUpdaterService extends CommonUpdater {
         }
     }
 
-    public void updateAllTeams() {
+    @Override
+    public void update() {
         Iterable<League> leagues = leagueRepository.findAll();
         leagues.forEach((league) -> {
             ArrayList<Pair<String, String>> queryParams = new ArrayList<>();
