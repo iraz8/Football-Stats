@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 public class LeagueUpdaterService extends CommonUpdater {
     private final List<String> sportWhitelist;
+    private final List<String> leaguesWhitelist;
     private final List<String> leaguesBlacklist;
-
     private final LeagueRepository leagueRepository;
 
     @Autowired
@@ -22,11 +22,13 @@ public class LeagueUpdaterService extends CommonUpdater {
             @Value("${api.path.leagues}") String apiPath,
             @Value("${api.path.leagues.jsonParentKey}") String jsonParentKey,
             @Value("#{${whitelist.sport}}") List<String> sportWhitelist,
+            @Value("#{${whitelist.leagues}}") List<String> leaguesWhitelist,
             @Value("#{${blacklist.leagues}}") List<String> leaguesBlacklist,
             LeagueRepository leagueRepository) {
         super.apiPath = apiPath;
         super.jsonParentKey = jsonParentKey;
         this.sportWhitelist = sportWhitelist;
+        this.leaguesWhitelist = leaguesWhitelist;
         this.leaguesBlacklist = leaguesBlacklist;
         this.leagueRepository = leagueRepository;
     }
@@ -35,9 +37,13 @@ public class LeagueUpdaterService extends CommonUpdater {
         if (!sportWhitelist.contains(element.get("strSport").asText())) {
             return;
         }
+        if (!leaguesWhitelist.contains(element.get("strLeague").asText())) {
+            return;
+        }
         if (leaguesBlacklist.contains(element.get("strLeague").asText())) {
             return;
         }
+
         League league = new League();
         league.setIdLeague(element.get("idLeague").asInt());
         league.setStrLeague(element.get("strLeague").asText());
