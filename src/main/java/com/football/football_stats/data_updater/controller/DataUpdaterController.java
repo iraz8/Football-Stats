@@ -14,14 +14,22 @@ public class DataUpdaterController {
     private final CountryUpdaterService countryUpdaterService;
     private final TeamUpdaterService teamUpdaterService;
     private final CompetitionTableUpdaterService competitionTableUpdaterService;
+    private final PlayerUpdaterService playerUpdaterService;
 
     @Autowired
-    public DataUpdaterController(LeagueUpdaterService leagueUpdaterService, LeagueDetailsUpdaterService leagueDetailsUpdaterService, CountryUpdaterService countryUpdaterService, TeamUpdaterService teamUpdaterService, CompetitionTableUpdaterService competitionTableUpdaterService) {
+    public DataUpdaterController(
+            LeagueUpdaterService leagueUpdaterService,
+            LeagueDetailsUpdaterService leagueDetailsUpdaterService,
+            CountryUpdaterService countryUpdaterService,
+            TeamUpdaterService teamUpdaterService,
+            CompetitionTableUpdaterService competitionTableUpdaterService,
+            PlayerUpdaterService playerUpdaterService) {
         this.leagueUpdaterService = leagueUpdaterService;
         this.leagueDetailsUpdaterService = leagueDetailsUpdaterService;
         this.countryUpdaterService = countryUpdaterService;
         this.teamUpdaterService = teamUpdaterService;
         this.competitionTableUpdaterService = competitionTableUpdaterService;
+        this.playerUpdaterService = playerUpdaterService;
     }
 
     @GetMapping("/update/all")
@@ -31,6 +39,7 @@ public class DataUpdaterController {
         leagueDetailsUpdaterService.updateAll();
         teamUpdaterService.updateAll();
         competitionTableUpdaterService.updateAllTables();
+        playerUpdaterService.updateAll();
         return "Updated all";
     }
 
@@ -57,6 +66,12 @@ public class DataUpdaterController {
     public String updateTables() {
         competitionTableUpdaterService.updateAllTables();
         return "Competition tables updated!";
+    }
+
+    @GetMapping("/update/players")
+    public String updatePlayers() {
+        playerUpdaterService.updateAll();
+        return "Players updated!";
     }
 
 }

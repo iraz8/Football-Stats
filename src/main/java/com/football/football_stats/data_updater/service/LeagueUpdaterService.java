@@ -14,7 +14,6 @@ import java.util.List;
 public class LeagueUpdaterService extends CommonUpdater {
     private final List<String> sportWhitelist;
     private final List<String> leaguesBlacklist;
-
     private final LeagueRepository leagueRepository;
 
     @Autowired
