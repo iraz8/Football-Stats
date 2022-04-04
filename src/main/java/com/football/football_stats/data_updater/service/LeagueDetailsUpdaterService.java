@@ -64,8 +64,7 @@ public class LeagueDetailsUpdaterService extends CommonUpdater {
     }
 
 
-    @Override
-    public void update() {
+    public void updateAll() {
         Iterable<League> leagues = leagueRepository.findAll();
         leagues.forEach((league) -> {
             ArrayList<Pair<String, String>> queryParams = new ArrayList<>();
@@ -73,11 +72,6 @@ public class LeagueDetailsUpdaterService extends CommonUpdater {
             try {
                 this.update(queryParams);
             } catch (NullPointerException ignored) {
-            }
-            try {
-                Thread.sleep(2100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
         });
     }

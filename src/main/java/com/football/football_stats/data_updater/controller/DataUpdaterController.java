@@ -28,7 +28,8 @@ public class DataUpdaterController {
     public String updateAll() {
         countryUpdaterService.update();
         leagueUpdaterService.update();
-        teamUpdaterService.update();
+        leagueDetailsUpdaterService.updateAll();
+        teamUpdaterService.updateAll();
         competitionTableUpdaterService.updateAllTables();
         return "Updated all";
     }
@@ -36,7 +37,7 @@ public class DataUpdaterController {
     @GetMapping("/update/leagues")
     public String updateLeagues() {
         leagueUpdaterService.update();
-        leagueDetailsUpdaterService.update();
+        leagueDetailsUpdaterService.updateAll();
         return "Leagues updated!";
     }
 
@@ -48,7 +49,7 @@ public class DataUpdaterController {
 
     @GetMapping("/update/teams")
     public String updateTeams() {
-        teamUpdaterService.update();
+        teamUpdaterService.updateAll();
         return "Teams updated!";
     }
 

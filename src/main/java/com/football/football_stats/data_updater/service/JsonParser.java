@@ -53,6 +53,11 @@ class JsonParser {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+        try {
+            Thread.sleep(2100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return response;
     }
 

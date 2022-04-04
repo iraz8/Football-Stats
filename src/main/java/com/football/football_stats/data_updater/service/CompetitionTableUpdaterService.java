@@ -77,11 +77,6 @@ public class CompetitionTableUpdaterService extends CommonUpdater {
                 } catch (NullPointerException ignored) {
 
                 }
-                try {
-                    Thread.sleep(2100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             });
     }
 }

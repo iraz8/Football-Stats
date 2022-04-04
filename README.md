@@ -6,8 +6,8 @@ Project state: In progress
 ---
 Purposes:
 
-- A football stats platform inspired by Flashscore, Livescore, etc., which shows the current competition tables, results,
-  team info, etc. In the future, there will be added results predictions based on different algorithms.
+- A football stats platform inspired by Flashscore, Livescore, etc., which shows the current competition tables,
+  results, team info, etc. In the future, there will be added results predictions based on different algorithms.
 - The personal aim for this long-term project is to improve my Spring and Angular skills by developing an increasingly
   complex platform.
 

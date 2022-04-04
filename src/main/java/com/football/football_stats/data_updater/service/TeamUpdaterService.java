@@ -63,18 +63,12 @@ public class TeamUpdaterService extends CommonUpdater {
         }
     }
 
-    @Override
-    public void update() {
+    public void updateAll() {
         Iterable<League> leagues = leagueRepository.findAll();
         leagues.forEach((league) -> {
             ArrayList<Pair<String, String>> queryParams = new ArrayList<>();
             queryParams.add(Pair.of(strLeagueParam, league.getStrLeague()));
             this.update(queryParams);
-            try {
-                Thread.sleep(2100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         });
     }
 }
