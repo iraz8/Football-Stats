@@ -18,12 +18,12 @@ public class DataUpdaterController {
 
     @Autowired
     public DataUpdaterController(
-            LeagueUpdaterService leagueUpdaterService,
-            LeagueDetailsUpdaterService leagueDetailsUpdaterService,
-            CountryUpdaterService countryUpdaterService,
-            TeamUpdaterService teamUpdaterService,
-            CompetitionTableUpdaterService competitionTableUpdaterService,
-            PlayerUpdaterService playerUpdaterService) {
+            final LeagueUpdaterService leagueUpdaterService,
+            final LeagueDetailsUpdaterService leagueDetailsUpdaterService,
+            final CountryUpdaterService countryUpdaterService,
+            final TeamUpdaterService teamUpdaterService,
+            final CompetitionTableUpdaterService competitionTableUpdaterService,
+            final PlayerUpdaterService playerUpdaterService) {
         this.leagueUpdaterService = leagueUpdaterService;
         this.leagueDetailsUpdaterService = leagueDetailsUpdaterService;
         this.countryUpdaterService = countryUpdaterService;

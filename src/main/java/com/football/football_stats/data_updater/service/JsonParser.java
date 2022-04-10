@@ -16,22 +16,27 @@ import java.util.ArrayList;
 
 @Service
 class JsonParser {
-    private final String apiUrl_protocol;
-    private final String apiBase_url;
+    private final String apiUrlProtocol;
+    private final String apiBaseUrl;
     private final String apiVersion;
     private final String apiFormat;
     private final String apiKey;
 
-    JsonParser(@Value("${api.url_protocol}") String apiUrl_protocol, @Value("${api.base_url}") String apiBase_url, @Value("${api.version}") String apiVersion, @Value("${api.format}") String apiFormat, @Value("${api.key}") String apiKey) {
-        this.apiUrl_protocol = apiUrl_protocol;
-        this.apiBase_url = apiBase_url;
+    JsonParser(
+            @Value("${api.url_protocol}") final String apiUrlProtocol,
+            @Value("${api.base_url}") final String apiBaseUrl,
+            @Value("${api.version}") final String apiVersion,
+            @Value("${api.format}") final String apiFormat,
+            @Value("${api.key}") final String apiKey) {
+        this.apiUrlProtocol = apiUrlProtocol;
+        this.apiBaseUrl = apiBaseUrl;
         this.apiVersion = apiVersion;
         this.apiFormat = apiFormat;
         this.apiKey = apiKey;
     }
 
-    private URI buildURI(String apiPath, ArrayList<Pair<String, String>> queryParams) {
-        URI uri = UriComponentsBuilder.newInstance().scheme(apiUrl_protocol).host(apiBase_url).pathSegment(apiVersion, apiFormat, apiKey, apiPath).build().toUri();
+    private URI buildURI(final String apiPath, final ArrayList<Pair<String, String>> queryParams) {
+        URI uri = UriComponentsBuilder.newInstance().scheme(apiUrlProtocol).host(apiBaseUrl).pathSegment(apiVersion, apiFormat, apiKey, apiPath).build().toUri();
 
         if (queryParams != null) {
             UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUri(uri);

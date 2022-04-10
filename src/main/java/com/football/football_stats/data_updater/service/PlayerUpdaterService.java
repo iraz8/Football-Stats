@@ -20,11 +20,11 @@ public class PlayerUpdaterService extends CommonUpdater {
 
     @Autowired
     public PlayerUpdaterService(
-            @Value("${api.path.players_in_team_by_team}") String apiPath,
-            @Value("${api.path.players_in_team_by_team.jsonParentKey}") String jsonParentKey,
-            @Value("${api.parameters.players_in_team_by_team}") String teamParam,
-            TeamRepository teamRepository,
-            PlayerRepository playerRepository) {
+            @Value("${api.path.players_in_team_by_team}") final String apiPath,
+            @Value("${api.path.players_in_team_by_team.jsonParentKey}") final String jsonParentKey,
+            @Value("${api.parameters.players_in_team_by_team}") final String teamParam,
+            final TeamRepository teamRepository,
+            final PlayerRepository playerRepository) {
         super.apiPath = apiPath;
         super.jsonParentKey = jsonParentKey;
         this.teamRepository = teamRepository;
@@ -32,7 +32,7 @@ public class PlayerUpdaterService extends CommonUpdater {
         this.teamParam = teamParam;
     }
 
-    void setProperties(JsonNode element) {
+    void setProperties(final JsonNode element) {
         Player player = new Player();
         player.setIdPlayer(element.get("idPlayer").asInt());
         player.setIdTeam(element.get("idTeam").asInt());

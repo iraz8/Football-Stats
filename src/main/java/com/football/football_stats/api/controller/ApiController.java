@@ -22,7 +22,11 @@ public class ApiController {
     private final CompetitionTableRepository competitionTableRepository;
 
     @Autowired
-    public ApiController(CountryRepository countryRepository, LeagueRepository leagueRepository, TeamRepository teamRepository, CompetitionTableRepository competitionTableRepository) {
+    public ApiController(
+            final CountryRepository countryRepository,
+            final LeagueRepository leagueRepository,
+            final TeamRepository teamRepository,
+            final CompetitionTableRepository competitionTableRepository) {
         this.countryRepository = countryRepository;
         this.leagueRepository = leagueRepository;
         this.teamRepository = teamRepository;
@@ -43,20 +47,22 @@ public class ApiController {
 
     @GetMapping("/api/leagues/{country_name}")
     @ResponseBody
-    public List<Team> getAllLeaguesByCountry(@PathVariable String country_name) {
+    public List<Team> getAllLeaguesByCountry(@PathVariable final String country_name) {
         return teamRepository.findAllByStrLeague(country_name);
     }
 
 
     @GetMapping("/api/table")
     @ResponseBody
-    public List<CompetitionTable> getAllLeagues(@RequestParam String competition_name, @RequestParam String season) {
+    public List<CompetitionTable> getAllLeagues(
+            @RequestParam final String competition_name,
+            @RequestParam final String season) {
         return competitionTableRepository.findAllByStrLeagueAndStrSeasonOrderByIntRankAsc(competition_name, season);
     }
 
     @GetMapping("/api/teams/{competition_name}")
     @ResponseBody
-    public List<Team> getAllTeamsByCompetition(@PathVariable String competition_name) {
+    public List<Team> getAllTeamsByCompetition(@PathVariable final String competition_name) {
         return teamRepository.findAllByStrLeague(competition_name);
     }
 

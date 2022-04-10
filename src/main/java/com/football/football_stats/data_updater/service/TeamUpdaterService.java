@@ -20,7 +20,12 @@ public class TeamUpdaterService extends CommonUpdater {
     private final LeagueRepository leagueRepository;
 
     @Autowired
-    public TeamUpdaterService(@Value("${api.path.teams_in_league}") String apiPath, @Value("${api.path.teams_in_league.jsonParentKey}") String jsonParentKey, @Value("${api.parameters.league.strLeague}") String strLeagueParam, TeamRepository teamRepository, LeagueRepository leagueRepository) {
+    public TeamUpdaterService(
+            @Value("${api.path.teams_in_league}") final String apiPath,
+            @Value("${api.path.teams_in_league.jsonParentKey}") final String jsonParentKey,
+            @Value("${api.parameters.league.strLeague}") final String strLeagueParam,
+            final TeamRepository teamRepository,
+            final LeagueRepository leagueRepository) {
         super.apiPath = apiPath;
         super.jsonParentKey = jsonParentKey;
         this.strLeagueParam = strLeagueParam;
@@ -28,7 +33,7 @@ public class TeamUpdaterService extends CommonUpdater {
         this.leagueRepository = leagueRepository;
     }
 
-    void setProperties(JsonNode element) {
+    void setProperties(final JsonNode element) {
         Team team = new Team();
         team.setIdTeam(element.get("idTeam").asInt());
         team.setStrTeam(element.get("strTeam").asText());

@@ -24,12 +24,13 @@ public class CompetitionTableUpdaterService extends CommonUpdater {
 
     @Autowired
     public CompetitionTableUpdaterService(
-            @Value("${api.path.table.byLeagueIdAndSeason}") String apiPath,
-            @Value("${api.path.table.byLeagueIdAndSeason.jsonParentKey}") String jsonParentKey,
-            @Value("${api.parameters.league.idLeague}") String idLeagueParam,
-            @Value("${api.parameters.season}") String seasonParam,
-            @Value("#{${whitelist.seasons}}") List<String> seasonsWhitelist,
-            CompetitionTableRepository competitionTableRepository, LeagueRepository leagueRepository) {
+            @Value("${api.path.table.byLeagueIdAndSeason}") final String apiPath,
+            @Value("${api.path.table.byLeagueIdAndSeason.jsonParentKey}") final String jsonParentKey,
+            @Value("${api.parameters.league.idLeague}") final String idLeagueParam,
+            @Value("${api.parameters.season}") final String seasonParam,
+            @Value("#{${whitelist.seasons}}") final List<String> seasonsWhitelist,
+            final CompetitionTableRepository competitionTableRepository,
+            final LeagueRepository leagueRepository) {
         super.apiPath = apiPath;
         super.jsonParentKey = jsonParentKey;
         this.seasonsWhitelist = seasonsWhitelist;
@@ -40,7 +41,7 @@ public class CompetitionTableUpdaterService extends CommonUpdater {
     }
 
     @Override
-    void setProperties(JsonNode element) {
+    void setProperties(final JsonNode element) {
         CompetitionTable competitionTable = new CompetitionTable();
         competitionTable.setIdStanding(element.get("idStanding").asInt());
         competitionTable.setIntRank(element.get("intRank").asInt());
@@ -64,10 +65,10 @@ public class CompetitionTableUpdaterService extends CommonUpdater {
         competitionTableRepository.save(competitionTable);
     }
 
-    public void updateAllTables() {
+    public final void updateAllTables() {
         competitionTableRepository.deleteAll();
         Iterable<League> leagues = leagueRepository.findAll();
-        for (String season : seasonsWhitelist)
+        for (String season : seasonsWhitelist) {
             leagues.forEach((league) -> {
                 ArrayList<Pair<String, String>> queryParams = new ArrayList<>();
                 queryParams.add(Pair.of(idLeagueParam, league.getIdLeague().toString()));
@@ -75,8 +76,8 @@ public class CompetitionTableUpdaterService extends CommonUpdater {
                 try {
                     this.update(queryParams);
                 } catch (NullPointerException ignored) {
-
                 }
             });
+        }
     }
 }

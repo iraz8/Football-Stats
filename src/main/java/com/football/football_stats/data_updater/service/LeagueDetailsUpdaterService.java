@@ -20,12 +20,12 @@ public class LeagueDetailsUpdaterService extends CommonUpdater {
 
     @Autowired
     LeagueDetailsUpdaterService(
-            @Value("${api.path.league_details_by_id}") String apiPath,
-            @Value("${api.path.league_details_by_id.jsonParentKey}") String jsonParentKey,
-            @Value("${api.parameters.league_details_by_id}") String idLeagueParam,
-            @Value("#{${whitelist.sport}}") List<String> sportWhitelist,
-            @Value("#{${blacklist.leagues}}") List<String> leaguesBlacklist,
-            LeagueRepository leagueRepository) {
+            @Value("${api.path.league_details_by_id}") final String apiPath,
+            @Value("${api.path.league_details_by_id.jsonParentKey}") final String jsonParentKey,
+            @Value("${api.parameters.league_details_by_id}") final String idLeagueParam,
+            @Value("#{${whitelist.sport}}") final List<String> sportWhitelist,
+            @Value("#{${blacklist.leagues}}") final List<String> leaguesBlacklist,
+            final LeagueRepository leagueRepository) {
         super.apiPath = apiPath;
         super.jsonParentKey = jsonParentKey;
         this.sportWhitelist = sportWhitelist;
@@ -34,7 +34,7 @@ public class LeagueDetailsUpdaterService extends CommonUpdater {
         this.idLeagueParam = idLeagueParam;
     }
 
-    void setProperties(JsonNode element) {
+    void setProperties(final JsonNode element) {
         if (!sportWhitelist.contains(element.get("strSport").asText())) {
             return;
         }

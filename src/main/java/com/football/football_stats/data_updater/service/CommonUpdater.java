@@ -18,13 +18,13 @@ abstract class CommonUpdater {
         update(null);
     }
 
-    public void update(ArrayList<Pair<String, String>> queryParams) {
+    public void update(final ArrayList<Pair<String, String>> queryParams) {
         JsonNode jsonNode = jsonParser.get(jsonParentKey, apiPath, queryParams);
         writeToDB(jsonNode);
     }
 
 
-    void writeToDB(JsonNode jsonNode) {
+    void writeToDB(final JsonNode jsonNode) {
         jsonNode.forEach(this::setProperties);
     }
 

@@ -15,13 +15,16 @@ public class CountryUpdaterService extends CommonUpdater {
     private final CountryRepository countryRepository;
 
     @Autowired
-    public CountryUpdaterService(@Value("${api.path.countries}") String apiPath, @Value("${api.path.countries.jsonParentKey}") String jsonParentKey, CountryRepository countryRepository) {
+    public CountryUpdaterService(
+            @Value("${api.path.countries}") final String apiPath,
+            @Value("${api.path.countries.jsonParentKey}") final String jsonParentKey,
+            final CountryRepository countryRepository) {
         super.apiPath = apiPath;
         super.jsonParentKey = jsonParentKey;
         this.countryRepository = countryRepository;
     }
 
-    void setProperties(JsonNode element) {
+    void setProperties(final JsonNode element) {
         Country country = new Country();
         country.setName_en(element.get("name_en").asText());
         countryRepository.save(country);
