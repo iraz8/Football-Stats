@@ -1,0 +1,30 @@
+.leagues-container{
+  width: 300px;
+  height: 1050px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.toggle {
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.toggle-button {
+  margin: 15px;
+  display: flex;
+  height: 1000px;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.toogle-icon {
+  transform: scale(3);
+}
+
+.example-sidenav {
+  padding: 20px;
+}

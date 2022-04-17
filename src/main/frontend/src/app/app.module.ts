@@ -23,6 +23,8 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {TeamInfoComponent} from './team-info/team-info.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatTreeModule} from "@angular/material/tree";
+import { PlayerInfoComponent } from './player-info/player-info.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {MatTreeModule} from "@angular/material/tree";
     CompetitionTableComponent,
     PageNotFoundComponent,
     TeamInfoComponent,
+    PlayerInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import {MatTreeModule} from "@angular/material/tree";
     MatTableModule,
     MatToolbarModule,
     MatFormFieldModule,
-    MatTreeModule
+    MatTreeModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

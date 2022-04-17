@@ -60,6 +60,7 @@ public class ApiController {
         return competitionTableRepository.findAllByStrLeagueAndStrSeasonOrderByIntRankAsc(competition_name, season);
     }
 
+
     @GetMapping("/api/teams/{competition_name}")
     @ResponseBody
     public List<Team> getAllTeamsByCompetition(@PathVariable final String competition_name) {
