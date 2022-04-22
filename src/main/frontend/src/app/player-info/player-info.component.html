@@ -2,21 +2,19 @@
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <div class="leagues-list">
       <div *ngFor="let league of leagues | async">
-        <button (click)="clickedLeague = league; getTeamsDetailsByLeagueName(league)" color="primary"
+        <button class="league-button" (click)="clickedLeague = league; getTeamsDetailsByLeagueName(league)" color="primary"
                 mat-flat-button>{{league.strLeague}}
           <mat-icon>chevron_right</mat-icon>
         </button>
       </div>
     </div>
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Competitions ->
-    </button>
   </mat-drawer>
 
-  <div class="toggle">
+  <div class="toggle-closed">
     <button class="toggle-button" type="button" mat-button (click)="drawer.toggle()">
-      Competitions
-      <mat-icon class="toogle-icon">arrow_forward_ios</mat-icon>
+      <p *ngIf="drawer.opened === false" class="toggle-button-text">Competitions</p>
+      <mat-icon *ngIf="drawer.opened === false" class="toogle-icon">arrow_forward_ios</mat-icon>
+      <mat-icon *ngIf="drawer.opened === true" class="toogle-icon-reversed">arrow_forward_ios</mat-icon>
     </button>
   </div>
 </mat-drawer-container>

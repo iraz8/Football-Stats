@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {League} from "../entities/League";
 import {Observable} from "rxjs";
 import {Team} from "../entities/Team";
 import {DataServiceComponent} from "../data-service/data-service.component";
+import {MatDrawer} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-player-info',
@@ -10,6 +11,7 @@ import {DataServiceComponent} from "../data-service/data-service.component";
   styleUrls: ['./player-info.component.css']
 })
 export class PlayerInfoComponent implements OnInit {
+  @ViewChild('drawer') drawer: MatDrawer | undefined;
   showFiller = false;
   clickedLeague?: League;
   leagues: Observable<League[]> | undefined;
