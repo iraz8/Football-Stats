@@ -1,5 +1,9 @@
+.page-content {
+  display:flex;
+}
+
 .leagues-container {
-  width: 45%;
+  width: 400px;
 }
 
 .toggle {
@@ -43,8 +47,12 @@
   background-color: rgba(63, 80, 180, 0.5);
 }
 
-
 .league-button {
   margin: 2px;
+  padding: 5px;
   width: 250px;
+}
+
+.team {
+  width: 1000px;
 }

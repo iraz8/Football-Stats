@@ -28,6 +28,7 @@ export class DataServiceComponent {
   private leaguesUrl = 'http://localhost:8080/api/leagues';
   private competitionTableUrl = 'http://localhost:8080/api/table';
   private teamsUrl = 'http://localhost:8080/api/teams';
+  private playersUrl = 'http://localhost:8080/api/player';
   private competitionNameParamKey = "competition_name";
   private seasonParamKey = "season";
 

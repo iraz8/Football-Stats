@@ -1,9 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {League} from "../entities/League";
 import {Observable} from "rxjs";
 import {Team} from "../entities/Team";
 import {DataServiceComponent} from "../data-service/data-service.component";
-import {MatDrawer} from "@angular/material/sidenav";
+
 
 @Component({
   selector: 'app-player-info',
@@ -11,7 +11,6 @@ import {MatDrawer} from "@angular/material/sidenav";
   styleUrls: ['./player-info.component.css']
 })
 export class PlayerInfoComponent implements OnInit {
-  @ViewChild('drawer') drawer: MatDrawer | undefined;
   showFiller = false;
   clickedLeague?: League;
   leagues: Observable<League[]> | undefined;
@@ -27,7 +26,6 @@ export class PlayerInfoComponent implements OnInit {
   getLeagues(): void {
     this.leagues = this.dataService.getLeagues();
   }
-
 
   getTeamsDetailsByLeagueName(league: League | undefined): void {
     if (league === undefined)

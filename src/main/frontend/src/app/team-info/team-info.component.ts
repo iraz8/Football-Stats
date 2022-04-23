@@ -26,7 +26,6 @@ export class TeamInfoComponent implements OnInit {
     this.leagues = this.dataService.getLeagues();
   }
 
-
   getTeamsDetailsByLeagueName(league: League | undefined): void {
     if (league === undefined)
       return;
