@@ -1,5 +1,5 @@
 <mat-drawer-container class="leagues-container">
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+  <mat-drawer #drawer mode="side">
     <div class="leagues-list">
       <div *ngFor="let league of leagues | async">
         <button class="league-button" (click)="clickedLeague = league; getTeamsDetailsByLeagueName(league)" color="primary"
@@ -10,7 +10,7 @@
     </div>
   </mat-drawer>
 
-  <div class="toggle-closed">
+  <div class="toggle">
     <button class="toggle-button" type="button" mat-button (click)="drawer.toggle()">
       <p *ngIf="drawer.opened === false" class="toggle-button-text">Competitions</p>
       <mat-icon *ngIf="drawer.opened === false" class="toogle-icon">arrow_forward_ios</mat-icon>

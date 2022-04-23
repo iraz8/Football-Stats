@@ -1,18 +1,17 @@
-.toggle-closed {
+.leagues-container {
+  width: 45%;
+}
+
+.toggle {
   display: flex;
   flex-grow: 1;
   width: 100px;
   height: 900px;
   background-color: #3f50b4;
-  border-width: 10px;
+  border-width: 15px;
   border-style: solid;
   border-image: linear-gradient(90deg, rgb(63, 80, 180) 0%, rgb(44, 60, 150) 50%, rgba(255, 255, 255, 0.78) 100%);
   border-image-slice: 1;
-}
-
-.leagues-list {
-  background-color: rgba(63, 80, 180, 0.85);
-  padding: 10px;
 }
 
 .toggle-button {
@@ -39,9 +38,11 @@
   transform: scale(3) rotate(180deg);
 }
 
-.example-sidenav {
-  padding: 20px;
+
+.leagues-list {
+  background-color: rgba(63, 80, 180, 0.5);
 }
+
 
 .league-button {
   margin: 2px;
