@@ -1,0 +1,58 @@
+.page-content {
+  display:flex;
+}
+
+.leagues-container {
+  width: 400px;
+}
+
+.toggle {
+  display: flex;
+  flex-grow: 1;
+  width: 100px;
+  height: 900px;
+  background-color: #3f50b4;
+  border-width: 15px;
+  border-style: solid;
+  border-image: linear-gradient(90deg, rgb(63, 80, 180) 0%, rgb(44, 60, 150) 50%, rgba(255, 255, 255, 0.78) 100%);
+  border-image-slice: 1;
+}
+
+.toggle-button {
+  display: inline;
+}
+
+.toggle-button-text {
+  display: inline;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 20px;
+  color: white;
+}
+
+.toogle-icon {
+  color: rgba(255, 255, 255, 0.75);
+  padding: 10px;
+  transform: scale(3);
+}
+
+.toogle-icon-reversed {
+  color: rgba(255, 255, 255, 0.75);
+  padding: 10px;
+  transform: scale(3) rotate(180deg);
+}
+
+
+.leagues-list {
+  background-color: rgba(63, 80, 180, 0.5);
+}
+
+.league-button {
+  margin: 2px;
+  padding: 5px;
+  width: 250px;
+}
+
+.team {
+  width: 1000px;
+}

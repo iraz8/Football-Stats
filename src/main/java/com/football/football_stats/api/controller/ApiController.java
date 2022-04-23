@@ -1,13 +1,7 @@
 package com.football.football_stats.api.controller;
 
-import com.football.football_stats.common.entity.CompetitionTable;
-import com.football.football_stats.common.entity.Country;
-import com.football.football_stats.common.entity.League;
-import com.football.football_stats.common.entity.Team;
-import com.football.football_stats.common.repository.CompetitionTableRepository;
-import com.football.football_stats.common.repository.CountryRepository;
-import com.football.football_stats.common.repository.LeagueRepository;
-import com.football.football_stats.common.repository.TeamRepository;
+import com.football.football_stats.common.entity.*;
+import com.football.football_stats.common.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,17 +14,20 @@ public class ApiController {
     private final LeagueRepository leagueRepository;
     private final TeamRepository teamRepository;
     private final CompetitionTableRepository competitionTableRepository;
+    private final PlayerRepository playerRepository;
 
     @Autowired
     public ApiController(
             final CountryRepository countryRepository,
             final LeagueRepository leagueRepository,
             final TeamRepository teamRepository,
-            final CompetitionTableRepository competitionTableRepository) {
+            final CompetitionTableRepository competitionTableRepository,
+            final PlayerRepository playerRepository) {
         this.countryRepository = countryRepository;
         this.leagueRepository = leagueRepository;
         this.teamRepository = teamRepository;
         this.competitionTableRepository = competitionTableRepository;
+        this.playerRepository = playerRepository;
     }
 
     @GetMapping("/api/countries")
@@ -60,6 +57,7 @@ public class ApiController {
         return competitionTableRepository.findAllByStrLeagueAndStrSeasonOrderByIntRankAsc(competition_name, season);
     }
 
+
     @GetMapping("/api/teams/{competition_name}")
     @ResponseBody
     public List<Team> getAllTeamsByCompetition(@PathVariable final String competition_name) {
@@ -77,5 +75,12 @@ public class ApiController {
     @ResponseBody
     public List<CompetitionTable> getAllCompetitionTables() {
         return competitionTableRepository.findAll();
+    }
+
+
+    @GetMapping("/api/players/{team}")
+    @ResponseBody
+    public List<Player> getAllPlayersByTeam(@PathVariable final String team) {
+        return playerRepository.findAllByStrTeam(team);
     }
 }

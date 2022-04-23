@@ -1,16 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {League} from "../entities/League";
+import {Observable} from "rxjs";
+import {Team} from "../entities/Team";
 import {DataServiceComponent} from "../data-service/data-service.component";
 
-import {Team} from "../entities/Team";
-import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-team-info',
-  templateUrl: './team-info.component.html',
-  styleUrls: ['./team-info.component.css']
+  selector: 'app-player-info',
+  templateUrl: './player-info.component.html',
+  styleUrls: ['./player-info.component.css']
 })
-export class TeamInfoComponent implements OnInit {
+export class PlayerInfoComponent implements OnInit {
+  showFiller = false;
   clickedLeague?: League;
   leagues: Observable<League[]> | undefined;
   teamsDetailsByLeague: Observable<Team[]> | undefined;
@@ -31,5 +32,4 @@ export class TeamInfoComponent implements OnInit {
       return;
     this.teamsDetailsByLeague = this.dataService.getTeamsDetailsByLeague(league.strLeague);
   }
-
 }

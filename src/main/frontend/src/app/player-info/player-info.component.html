@@ -1,0 +1,39 @@
+<div class="page-content">
+<mat-drawer-container class="leagues-container">
+  <mat-drawer #drawer mode="side">
+    <div class="leagues-list">
+      <div *ngFor="let league of leagues | async">
+        <button class="league-button" (click)="clickedLeague = league; getTeamsDetailsByLeagueName(league)" color="primary"
+                mat-flat-button>{{league.strLeague}}
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <div class="toggle">
+    <button class="toggle-button" type="button" mat-button (click)="drawer.toggle()">
+      <p *ngIf="drawer.opened === false" class="toggle-button-text">Competitions</p>
+      <mat-icon *ngIf="drawer.opened === false" class="toogle-icon">arrow_forward_ios</mat-icon>
+      <mat-icon *ngIf="drawer.opened === true" class="toogle-icon-reversed">arrow_forward_ios</mat-icon>
+    </button>
+  </div>
+</mat-drawer-container>
+
+
+<mat-accordion class="teams">
+  <mat-expansion-panel *ngFor="let teamDetails of teamsDetailsByLeague | async">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <img alt="str_team_badge" class="badge" src="{{teamDetails.strTeamBadge}}">
+      </mat-panel-title>
+      <mat-panel-description>
+        {{teamDetails.strTeam}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-card *ngIf="teamDetails.strTeamShort!=='null'"><b>Short: </b> &nbsp;{{teamDetails.strTeamShort}}</mat-card>
+    <mat-card *ngIf="teamDetails.strCountry!=='null'"><b>Country: </b> &nbsp;{{teamDetails.strCountry}}</mat-card>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
