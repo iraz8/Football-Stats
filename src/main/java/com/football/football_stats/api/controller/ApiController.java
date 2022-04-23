@@ -81,6 +81,6 @@ public class ApiController {
     @GetMapping("/api/players/{team}")
     @ResponseBody
     public List<Player> getAllPlayersByTeam(@PathVariable final String team) {
-        return playerRepository.findAllbyStrTeam(team);
+        return playerRepository.findAllByStrTeam(team);
     }
 }
