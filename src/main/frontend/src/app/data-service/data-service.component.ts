@@ -7,6 +7,7 @@ import {MessageService} from "./message.service";
 import {League} from "../entities/League";
 import {CompetitionTable} from "../entities/CompetitionTable";
 import {Team} from "../entities/Team";
+import {Player} from "../entities/Player";
 
 @Component({
   selector: 'app-data-service',
@@ -28,7 +29,7 @@ export class DataServiceComponent {
   private leaguesUrl = 'http://localhost:8080/api/leagues';
   private competitionTableUrl = 'http://localhost:8080/api/table';
   private teamsUrl = 'http://localhost:8080/api/teams';
-  private playersUrl = 'http://localhost:8080/api/player';
+  private playersUrl = 'http://localhost:8080/api/players';
   private competitionNameParamKey = "competition_name";
   private seasonParamKey = "season";
 
@@ -68,6 +69,15 @@ export class DataServiceComponent {
       .pipe(
         tap(_ => this.log(`fetched teams from ${competitionName}`)),
         catchError(this.handleError<Team[]>(`getTeamsDetailsByLeague from ${competitionName}`, []))
+      );
+  }
+
+  getPlayersByTeam(team: string | undefined): Observable<Player[]> {
+    let playerByTeam = `${this.playersUrl}/${team}`;
+    return this.http.get<Player[]>(playerByTeam)
+      .pipe(
+        tap(_ => this.log(`fetched players from ${team}`)),
+        catchError(this.handleError<Player[]>(`getPlayersByTeam from ${team}`, []))
       );
   }
 
