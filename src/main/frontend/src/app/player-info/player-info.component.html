@@ -1,72 +1,78 @@
 <div class="page-content">
-<mat-drawer-container class="leagues-container">
-  <mat-drawer #drawer mode="side">
-    <div class="leagues-list">
-      <div *ngFor="let league of leagues | async">
-        <button class="league-button" (click)="clickedLeague = league; getTeamsDetailsByLeagueName(league)" color="primary"
-                mat-flat-button>{{league.strLeague}}
-          <mat-icon>chevron_right</mat-icon>
-        </button>
+  <mat-drawer-container class="leagues-container">
+    <mat-drawer #drawer mode="side">
+      <div class="leagues-list">
+        <div *ngFor="let league of leagues | async">
+          <button class="league-button" (click)="clickedLeague = league; getTeamsDetailsByLeagueName(league)"
+                  color="primary"
+                  mat-flat-button>{{league.strLeague}}
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
       </div>
+    </mat-drawer>
+
+    <div class="toggle">
+      <button class="toggle-button" type="button" mat-button (click)="drawer.toggle()">
+        <p *ngIf="drawer.opened === false" class="toggle-button-text">Competitions</p>
+        <mat-icon *ngIf="drawer.opened === false" class="toogle-icon">arrow_forward_ios</mat-icon>
+        <mat-icon *ngIf="drawer.opened === true" class="toogle-icon-reversed">arrow_forward_ios</mat-icon>
+      </button>
     </div>
-  </mat-drawer>
+  </mat-drawer-container>
 
-  <div class="toggle">
-    <button class="toggle-button" type="button" mat-button (click)="drawer.toggle()">
-      <p *ngIf="drawer.opened === false" class="toggle-button-text">Competitions</p>
-      <mat-icon *ngIf="drawer.opened === false" class="toogle-icon">arrow_forward_ios</mat-icon>
-      <mat-icon *ngIf="drawer.opened === true" class="toogle-icon-reversed">arrow_forward_ios</mat-icon>
-    </button>
-  </div>
-</mat-drawer-container>
+  <mat-divider [vertical]="true"></mat-divider>
 
+  <mat-accordion class="teams">
+    <mat-expansion-panel *ngFor="let teamDetails of teamsDetailsByLeague | async">
+      <mat-expansion-panel-header (click)="getPlayersByTeam(teamDetails)">
+        <mat-panel-title>
+          <img alt="str_team_badge" class="badge" src="{{teamDetails.strTeamBadge}}">
+        </mat-panel-title>
+        <mat-panel-description >
+          {{teamDetails.strTeam}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
-<mat-accordion class="teams">
-  <mat-expansion-panel *ngFor="let teamDetails of teamsDetailsByLeague | async">
-    <mat-expansion-panel-header (click)="getPlayersByTeam(teamDetails)">
-      <mat-panel-title>
-        <img alt="str_team_badge" class="badge" src="{{teamDetails.strTeamBadge}}">
-      </mat-panel-title>
-      <mat-panel-description>
-        {{teamDetails.strTeam}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
+      <mat-accordion >
+        <mat-expansion-panel *ngFor="let player of playersByTeam | async">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
 
-    <mat-accordion>
-      <mat-expansion-panel *ngFor="let player of playersByTeam | async">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <img alt="str_team_badge" class="badge" src="{{player.strCutout}}">
-          </mat-panel-title>
-          <mat-panel-description>
-            {{player.strPlayer}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-
-        <mat-card *ngIf="player.strNationality!=='null'"><b>Nationality: </b> &nbsp;{{player.strNationality}}</mat-card>
-        <mat-card *ngIf="player.strNumber!=='null'"><b>Number: </b> &nbsp;{{player.strNumber}}</mat-card>
-        <mat-card *ngIf="player.strSide!=='null'"><b>Side: </b> &nbsp;{{player.strSide}}</mat-card>
-        <mat-card *ngIf="player.strPosition!=='null'"><b>Position: </b> &nbsp;{{player.strPosition}}</mat-card>
-        <mat-card *ngIf="player.dateBorn!=='null'"><b>Born: </b> &nbsp;{{player.dateBorn}}</mat-card>
-        <mat-card *ngIf="player.strBirthLocation!=='null'"><b>Birth location: </b> &nbsp;{{player.strBirthLocation}}</mat-card>
-        <mat-card *ngIf="player.strHeight!=='null'"><b>Height: </b> &nbsp;{{player.strHeight}}</mat-card>
-        <mat-card *ngIf="player.strWeight!=='null'"><b>Weight: </b> &nbsp;{{player.strWeight}}</mat-card>
-        <mat-card *ngIf="player.dateSigned!=='null'"><b>Date signed: </b> &nbsp;{{player.dateSigned}}</mat-card>
-        <mat-card *ngIf="player.strSigning!=='null'"><b>Signing: </b> &nbsp;{{player.strSigning}}</mat-card>
-        <mat-card *ngIf="player.strWage!=='null'"><b>Wage: </b> &nbsp;{{player.strWage}}</mat-card>
-        <mat-card *ngIf="player.strDescriptionEN!=='null'"><b>Description: </b> &nbsp;{{player.strDescriptionEN}}</mat-card>
-
-        <mat-card *ngIf="player.strFacebook!=='null'"><b>Facebook: </b> &nbsp;{{player.strFacebook}}</mat-card>
-        <mat-card *ngIf="player.strWebsite!=='null'"><b>Website: </b> &nbsp;{{player.strWebsite}}</mat-card>
-        <mat-card *ngIf="player.strTwitter!=='null'"><b>Twitter: </b> &nbsp;{{player.strTwitter}}</mat-card>
-        <mat-card *ngIf="player.strInstagram!=='null'"><b>Instagram: </b> &nbsp;{{player.strInstagram}}</mat-card>
-        <mat-card *ngIf="player.strYoutube!=='null'"><b>Youtube: </b> &nbsp;{{player.strYoutube}}</mat-card>
+            </mat-panel-title>
+            <mat-panel-description>
+              {{player.strPlayer}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+<!--          <mat-card *ngIf="player.strCutout && player.strCutout !== 'null'">-->
+<!--            <b>Photo: </b> &nbsp; <img alt="str_cutout" class="badge" src="{{player.strCutout}}">-->
+<!--          </mat-card>-->
+          <mat-card *ngIf="player.strNationality">
+            <b>Nationality: </b> &nbsp;{{player.strNationality}}
+          </mat-card>
+          <mat-card *ngIf="player.strNumber && player.strNumber !== 'null'"><b>Number: </b> &nbsp;{{player.strNumber}}</mat-card>
+          <mat-card *ngIf="player.strSide && player.strSide !== 'null'"><b>Side: </b> &nbsp;{{player.strSide}}</mat-card>
+          <mat-card *ngIf="player.strPosition && player.strPosition !== 'null'"><b>Position: </b> &nbsp;{{player.strPosition}}</mat-card>
+          <mat-card *ngIf="player.dateBorn && player.strBirthLocation !== 'null'"><b>Born: </b> &nbsp;{{player.dateBorn}}</mat-card>
+          <mat-card *ngIf="player.strBirthLocation && player.strBirthLocation !== 'null'"><b>Birth location: </b> &nbsp;{{player.strBirthLocation}}
+          </mat-card>
+          <mat-card *ngIf="player.strHeight && player.strHeight !== 'null'"><b>Height: </b> &nbsp;{{player.strHeight}}</mat-card>
+          <mat-card *ngIf="player.strWeight && player.strWeight !== 'null'"><b>Weight: </b> &nbsp;{{player.strWeight}}</mat-card>
+          <mat-card *ngIf="player.dateSigned && player.dateSigned !== 'null'"><b>Date signed: </b> &nbsp;{{player.dateSigned}}</mat-card>
+          <mat-card *ngIf="player.strSigning && player.strWage !== 'null'"><b>Signing: </b> &nbsp;{{player.strSigning}}</mat-card>
+          <mat-card *ngIf="player.strWage && player.strWage !== 'null'"><b>Wage: </b> &nbsp;{{player.strWage}}</mat-card>
+          <mat-card *ngIf="player.strDescriptionEN && player.strDescriptionEN != 'null'"><b>Description: </b> &nbsp;{{player.strDescriptionEN}}
+          </mat-card>
+          <mat-card *ngIf="player.strFacebook && player.strFacebook !== 'null'"><b>Facebook: </b> &nbsp;{{player.strFacebook}}</mat-card>
+          <mat-card *ngIf="player.strWebsite && player.strWebsite !== 'null'"><b>Website: </b> &nbsp;{{player.strWebsite}}</mat-card>
+          <mat-card *ngIf="player.strTwitter && player.strTwitter !== 'null'"><b>Twitter: </b> &nbsp;{{player.strTwitter}}</mat-card>
+          <mat-card *ngIf="player.strInstagram && player.strInstagram !== 'null'"><b>Instagram: </b> &nbsp;{{player.strInstagram}}</mat-card>
+          <mat-card *ngIf="player.strYoutube && player.strYoutube !== 'null'"><b>Youtube: </b> &nbsp;{{player.strYoutube}}</mat-card>
 
 
+        </mat-expansion-panel>
+      </mat-accordion>
 
-      </mat-expansion-panel>
-    </mat-accordion>
-
-  </mat-expansion-panel>
-</mat-accordion>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
