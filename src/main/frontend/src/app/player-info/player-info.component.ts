@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {League} from "../entities/League";
-import {Observable} from "rxjs";
+import {Observable, timeout} from "rxjs";
 import {Team} from "../entities/Team";
 import {DataServiceComponent} from "../data-service/data-service.component";
+import {Player} from "../entities/Player";
 
 
 @Component({
@@ -15,6 +16,7 @@ export class PlayerInfoComponent implements OnInit {
   clickedLeague?: League;
   leagues: Observable<League[]> | undefined;
   teamsDetailsByLeague: Observable<Team[]> | undefined;
+  playersByTeam: Observable<Player[]> | undefined;
 
   constructor(private dataService: DataServiceComponent) {
   }
@@ -31,5 +33,11 @@ export class PlayerInfoComponent implements OnInit {
     if (league === undefined)
       return;
     this.teamsDetailsByLeague = this.dataService.getTeamsDetailsByLeague(league.strLeague);
+  }
+
+  getPlayersByTeam(team: Team | undefined): void {
+    if (team === undefined)
+      return;
+    this.playersByTeam = this.dataService.getPlayersByTeam(team.strTeam);
   }
 }
