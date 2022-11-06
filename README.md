@@ -1,9 +1,6 @@
 # [WIP] Football Stats
 
 ---
-Project state: In progress
-
----
 Purposes:
 
 - A football stats platform inspired by Flashscore, Livescore, etc., which shows the current competition tables,
