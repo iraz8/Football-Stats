@@ -1,4 +1,4 @@
-# [WIP] Football Stats
+# Football Stats
 
 ---
 Purposes:
